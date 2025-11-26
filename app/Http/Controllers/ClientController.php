@@ -9,7 +9,8 @@ class ClientController extends Controller
 {
     public function index()
     {
-        //
+        $clients = Client::all();
+        return view('clients.index', compact('clients'));
     }
 
     public function create()
@@ -19,7 +20,22 @@ class ClientController extends Controller
 
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'nom' => 'required|string',
+            'adresse' => 'nullable|string',
+            'email' => 'nullable|email',
+            'tel' => 'nullable|string',
+        ]);
+
+        Client::create([
+            'nom' => $request->nom,
+            'adresse' => $request->adresse,
+            'telephone' => $request->telephone,
+            'email' => $request->email,
+        ]);
+
+        return redirect()->route('clients.index');
     }
 
     public function show(Client $client)
