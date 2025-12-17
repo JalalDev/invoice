@@ -53,6 +53,17 @@
 									</div>
 								</div>
 								<div id="kt_app_content" class="app-content flex-column-fluid">
+
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul class="mb-0">
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
+
 									<div class="card">
 										<div class="card-body p-5 px-lg-19 py-lg-16">
                                             @yield('content')
@@ -71,5 +82,6 @@
 		</div>
 		<script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
 		<script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
+        @yield('page-js')
 	</body>
 </html>

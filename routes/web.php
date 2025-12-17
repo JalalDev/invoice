@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,3 +14,4 @@ Route::get('/about', function () {
 
 Route::get('client/search', [ClientController::class, 'search'])->name('clients.search');
 Route::resource('clients', ClientController::class);
+Route::resource('articles', ArticleController::class);
