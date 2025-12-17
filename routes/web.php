@@ -11,4 +11,5 @@ Route::get('/about', function () {
     return view('about');
 });
 
+Route::get('client/search', [ClientController::class, 'search'])->name('clients.search');
 Route::resource('clients', ClientController::class);

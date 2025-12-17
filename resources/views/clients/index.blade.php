@@ -3,9 +3,27 @@
 
 @section('content')
 
-    <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Nouveau client
-    </button>
+    <div class="row mb-5">
+        <div class="col-md-6">
+            <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Nouveau client
+            </button>
+        </div>
+        <div class="col-md-6">
+            <form action="{{ route('clients.search') }}" method="GET">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="text" placeholder="Rechercher ..." name="search" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-secondary w-100">Rechercher</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
 
     <table class="table table-striped table-bordered table-hover">
         <thead>
@@ -14,6 +32,7 @@
                 <th>Adresse</th>
                 <th>Tel</th>
                 <th>Email</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -23,14 +42,24 @@
                     <td>{{ $client->adresse }}</td>
                     <td>{{ $client->telephone }}</td>
                     <td>{{ $client->email }}</td>
+                    <td>
+                        <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-sm btn-info">Edit</a>
+                        <form action="{{ route('clients.destroy', $client->id) }}" method="post" class="d-inline">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit" class="btn btn-sm btn-danger">Supprimer</button>
+                        </form>
+                    </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="4">Pas de client disponible</td>
+                    <td colspan="5">Pas de client disponible</td>
                 </tr>
             @endforelse
         </tbody>
     </table>
+
+    {{ $clients->links() }}
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
