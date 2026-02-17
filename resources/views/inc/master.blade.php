@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Metronic - @yield('title')</title>
+		<title>{{ config('app.name') }} - @yield('title')</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.ico') }}" />
@@ -26,29 +26,6 @@
 													<span>@yield('title')</span>
 												</h1>
 											</div>
-											<ul class="breadcrumb breadcrumb-separatorless fw-semibold mb-3 fs-7">
-												<li class="breadcrumb-item text-gray-700 fw-bold lh-1">
-													<a href="../../demo37/dist/index.html" class="text-white text-hover-primary">
-														<i class="ki-outline ki-home text-gray-700 fs-6"></i>
-													</a>
-												</li>
-												<li class="breadcrumb-item">
-													<i class="ki-outline ki-right fs-7 text-gray-700 mx-n1"></i>
-												</li>
-												<li class="breadcrumb-item text-gray-700 fw-bold lh-1">Corporate</li>
-												<li class="breadcrumb-item">
-													<i class="ki-outline ki-right fs-7 text-gray-700 mx-n1"></i>
-												</li>
-												<li class="breadcrumb-item text-gray-700">Licenses</li>
-											</ul>
-										</div>
-										<div class="d-flex align-self-center flex-center flex-shrink-0">
-											<a href="#" class="btn btn-sm btn-success d-flex flex-center ms-3 px-4 py-3" data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends">
-												<i class="ki-outline ki-plus-square fs-2"></i>
-												<span>Invite</span>
-											</a>
-											<a href="#" class="btn btn-sm btn-dark ms-3 px-4 py-3" data-bs-toggle="modal" data-bs-target="#kt_modal_new_target">Create
-											<span class="d-none d-sm-inline">Target</span></a>
 										</div>
 									</div>
 								</div>
